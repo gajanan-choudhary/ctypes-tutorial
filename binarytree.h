@@ -4,7 +4,7 @@
  * Problem: Implement a binary tree. Must have the following:
  *     1. Insert a value
  *     2. Lookup a value
- *     3. ??? <I cannot recall this one. Smallest-to-largest traversal?>
+ *     3. Smallest-to-largest tree traversal
  *
  * Assumptions:
  *     1. Binary tree is sorted.
@@ -39,7 +39,7 @@ typedef struct{
 /* Node functions */
 void freeNode(Node *node);
 Node ** findNodeOfVal(Node **node, int value);
-void showNode(Node *node, int parent, int leftRight);
+void showNodeOrdered(Node *node, int parent, int leftRight);
 
 /*****************************************************************************/
 /* Tree functions; Some of these depend on Node functions. */
