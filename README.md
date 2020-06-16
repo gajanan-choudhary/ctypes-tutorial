@@ -26,12 +26,22 @@ them into Python.
 
 ### Usage
 CMake is used to build this project. Run the following commands from your
-terminal:
+terminal to build the library and the Python interface:
 ```
 mkdir build
 cd build
-cmake ..
+cmake -DMAKE_SHARED_LIBRARY=ON ..
 make
+cd ..
+```
+
+Then run python from the root directory, import the pybinarytree package and use
+it. For example:
+```
+import pybinarytree as pbt
+tree = pbt.Tree()
+tree.insertVal([-1, 2, 0, 6, 1, 221, -3, 5, 8, 7])
+tree.showOrdered()
 ```
 
 ## Features
