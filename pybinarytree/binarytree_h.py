@@ -28,12 +28,12 @@ def _Node_showNodeOrdered(self, parent, left_or_right):
     pybtlib.showNodeOrdered.argtypes = [ctypes.POINTER(Node),
                                        ctypes.c_int, ctypes.c_int]
     return pybtlib.showNodeOrdered(ctypes.byref(self), parent, left_or_right)
-def _Node_findNodeOfVal(node_ptr, val):
-    """Wrapper for Node **findNodeOfVal(Node *)."""
-    pybtlib.findNodeOfVal.restype = ctypes.POINTER(ctypes.POINTER(Node))
-    pybtlib.findNodeOfVal.argtypes = [ctypes.POINTER(ctypes.POINTER(Node)),
+def _Node_findNodeByVal(node_ptr, val):
+    """Wrapper for Node **findNodeByVal(Node *)."""
+    pybtlib.findNodeByVal.restype = ctypes.POINTER(ctypes.POINTER(Node))
+    pybtlib.findNodeByVal.argtypes = [ctypes.POINTER(ctypes.POINTER(Node)),
                                      ctypes.c_int]
-    return pybtlib.findNodeOfVal(ctypes.byref(node_ptr), val)
+    return pybtlib.findNodeByVal(ctypes.byref(node_ptr), val)
 def _Node__init__(self):
     """Node initializer."""
     self.id = UNSET_NODE_ID
@@ -52,7 +52,7 @@ Node._fields_ = _Node_fields
 Node.__init__ = _Node__init__
 Node.__del__ = _Node__del__
 Node.showOrdered = _Node_showNodeOrdered
-Node.findNodeByVal = _Node_findNodeOfVal
+Node.findNodeByVal = _Node_findNodeByVal
 
 def freeNodeArray(node_ptr):
     """Wrapper for void freeNode(Node *)."""
@@ -83,8 +83,11 @@ class Tree(ctypes.Structure):
         Instead of inserting a single val, a list of vals can be inserted."""
         pybtlib.insertVal.restype = None
         pybtlib.insertVal.argtypes = [ctypes.POINTER(Tree), ctypes.c_int]
-        for i in val:
-            pybtlib.insertVal(ctypes.byref(self), i)
+        try:
+            for i in val:
+                pybtlib.insertVal(ctypes.byref(self), i)
+        except:
+            pybtlib.insertVal(ctypes.byref(self), val)
         return
     def lookupVal(self, val):
         """Wrapper for int lookupVal(Tree *, int)."""
