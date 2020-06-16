@@ -128,11 +128,12 @@ void insertVal(Tree *tree, int value){
         (*node)->left = NULL;
         (*node)->right = NULL;
         if(DEBUG==1) printf("Checkpoint: Function %s, line %d\n", __func__, __LINE__);
+        printf("New node created with ID %i and value %i.\n", (*node)->id, (*node)->val);
     }
     else { /* Possible only if value already exists in the tree. */
-        /* Throw error */
-        printf("Error! Function %s, line %d\n", __func__, __LINE__);
-        exit(-1);
+        /* Throw warning and do nothing. */
+        printf("A node with that value (%i) already exists with id %i. "
+                "No new node created.\n", (*node)->val, (*node)->id);
     }
 }
 
