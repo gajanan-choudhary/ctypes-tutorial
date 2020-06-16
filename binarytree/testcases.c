@@ -24,10 +24,12 @@ void testGeneralTree(){
 
     printf("Inserting values in the tree...\n    [");
     for (i=0; i<10; i++){
-        insertVal(tree, values[i]);
         printf(" %i ",values[i]);
     }
     printf("]\n");
+    for (i=0; i<10; i++){
+        insertVal(tree, values[i]);
+    }
 
     printf("\nVerifying that inserted values exist in the tree...\n");
     for (i=0; i<10; i++){
@@ -52,7 +54,7 @@ void testGeneralTree(){
         }
     }
     
-    printf("\nDisplaying tree...\n");
+    printf("\nDisplaying tree by ascending values...\n");
     showTree(tree);
 
     printf("Freeing tree...\n");
@@ -68,7 +70,7 @@ void testSortedTraversal(){
     int i;
 
     int values[24] ={124,  53,  21,  94, 626, 846, 352, 731, 234, 1, -23,    0,
-                     942,   9, 654,  87, 342,  12,   7, 125,  89, 2, 121, -254};
+                     942,   9, 654,  87, 352,  12,   7, 125,  89, 2, 121, -254};
 
     printf("\n/***********************************************************/\n");
     printf("/****************** Sorted traversal test ******************/\n");
@@ -76,10 +78,12 @@ void testSortedTraversal(){
 
     printf("Inserting values in the tree...\n    [");
     for (i=0; i<24; i++){
-        insertVal(tree, values[i]);
         printf(" %i ",values[i]);
     }
     printf("]\n");
+    for (i=0; i<24; i++){
+        insertVal(tree, values[i]);
+    }
 
     showTree(tree);
 

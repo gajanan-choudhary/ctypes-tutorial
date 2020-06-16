@@ -38,7 +38,7 @@ typedef struct{
 /*****************************************************************************/
 /* Node functions */
 void freeNode(Node *node);
-Node ** findNodeOfVal(Node **node, int value);
+Node ** findNodeByVal(Node **node, int value);
 void showNodeOrdered(Node *node, int parent, int leftRight);
 
 /*****************************************************************************/
