@@ -44,15 +44,15 @@ void freeNode(Node *node){
  * If input value is found, returns that node, else
  * If input value is not found, returns the node where that value would ideally exist.
  * */
-Node ** findNodeOfVal(Node **node, int value){
+Node ** findNodeByVal(Node **node, int value){
     if      ((*node)==NULL){
         return node;
     }
     else if (value < (*node)->val){
-        return findNodeOfVal(&((*node)->left), value);
+        return findNodeByVal(&((*node)->left), value);
     }
     else if (value > (*node)->val){
-        return findNodeOfVal(&((*node)->right), value);
+        return findNodeByVal(&((*node)->right), value);
     }
     else if (value == (*node)->val){
         return node; /* No duplicate values allowed */
@@ -120,7 +120,7 @@ void showTree(Tree *tree){
 /*****************************************************************************/
 /* Inserts node with a given value */
 void insertVal(Tree *tree, int value){
-    Node **node=findNodeOfVal(&(tree->root), value); /* Alias for traversal */
+    Node **node=findNodeByVal(&(tree->root), value); /* Alias for traversal */
     if (!(*node)){
         (*node) = (Node *) malloc(sizeof(Node));
         (*node)->id = globalid++;
@@ -141,7 +141,7 @@ void insertVal(Tree *tree, int value){
 int lookupVal(Tree *tree, int value){
     Node **foundNode=NULL;
     if (tree && tree->root){
-        foundNode = findNodeOfVal(&(tree->root), value);
+        foundNode = findNodeByVal(&(tree->root), value);
         if (*foundNode){
             printf("    Found node: ID = %i\n", (*foundNode)->id);
             return (*foundNode)->id;
