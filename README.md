@@ -48,7 +48,7 @@ tree.showOrdered()
 List of features that are ready:
 * Demonstrates examples of how an entire project can be wrapped into ctypes
   smartly
-* Demonstrates how to handle preprocessor-directive-dependent code (#ifdef ...)
+* Demonstrates how to handle preprocessor-directive-dependent code (`#ifdef` ...)
 * Demonstrates pitfalls of wrapping C code using ctypes
 
 ## Status
